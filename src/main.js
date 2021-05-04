@@ -1,7 +1,12 @@
 import Quill from "quill";
+let quill
+
+export function setContents(data){
+  quill.setContents(data.map(e=>e.html))
+}
 
 export function quill(node, options) {
-  const quill = new Quill(node, {
+  quill = new Quill(node, {
     modules: {
       toolbar: [
         [{ header: [1, 2, 3, false] }],
