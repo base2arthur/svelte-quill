@@ -1,6 +1,10 @@
 import Quill from "quill";
 let quill_
 
+export function setContents(content){
+  quill_.setContents(content.map(e=>e.html))
+}
+
 export function quill(node, options,content) {
   quill_ = new Quill(node, {
     modules: {

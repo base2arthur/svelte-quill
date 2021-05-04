@@ -8,6 +8,10 @@ var Quill = _interopDefault(require('quill'));
 
 let quill_;
 
+function setContents(content){
+  quill_.setContents(content.map(e=>e.html));
+}
+
 function quill(node, options,content) {
   quill_ = new Quill(node, {
     modules: {
@@ -41,3 +45,4 @@ function quill(node, options,content) {
 }
 
 exports.quill = quill;
+exports.setContents = setContents;

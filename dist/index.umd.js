@@ -11422,6 +11422,10 @@
 
 	let quill_;
 
+	function setContents(content){
+	  quill_.setContents(content.map(e=>e.html));
+	}
+
 	function quill$1(node, options,content) {
 	  quill_ = new Quill(node, {
 	    modules: {
@@ -11455,6 +11459,7 @@
 	}
 
 	exports.quill = quill$1;
+	exports.setContents = setContents;
 
 	Object.defineProperty(exports, '__esModule', { value: true });
 
