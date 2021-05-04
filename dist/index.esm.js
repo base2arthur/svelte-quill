@@ -3,7 +3,7 @@ import Quill from 'quill';
 let quill_;
 
 function setContents(content){
-  quill_.setContents(content.map(e=>e.html));
+  quill_.setContents(content.html);
 }
 
 function quill(node, options,content) {
