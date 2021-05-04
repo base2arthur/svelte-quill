@@ -3,7 +3,7 @@ import Quill from 'quill';
 let quill_;
 
 function setContents(content){
-  quill_.setContents(content.html);
+  quill_.setContents(content);
 }
 
 function quill(node, options,content) {
@@ -33,7 +33,7 @@ function quill(node, options,content) {
   });
 
   if(content&&quill){
-    quill_.setContents(content.map(e=>e.html));
+    quill_.setContents(content);
   }
 
 }

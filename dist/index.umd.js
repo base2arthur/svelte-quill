@@ -11423,7 +11423,7 @@
 	let quill_;
 
 	function setContents(content){
-	  quill_.setContents(content.html);
+	  quill_.setContents(content);
 	}
 
 	function quill$1(node, options,content) {
@@ -11453,7 +11453,7 @@
 	  });
 
 	  if(content&&quill$1){
-	    quill_.setContents(content.map(e=>e.html));
+	    quill_.setContents(content);
 	  }
 
 	}
