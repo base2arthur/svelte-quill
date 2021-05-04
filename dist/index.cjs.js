@@ -6,8 +6,10 @@ function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'defau
 
 var Quill = _interopDefault(require('quill'));
 
-function quill(node, options) {
-  const quill = new Quill(node, {
+let quill_;
+
+function quill(node, options,content) {
+  quill_ = new Quill(node, {
     modules: {
       toolbar: [
         [{ header: [1, 2, 3, false] }],
@@ -21,16 +23,21 @@ function quill(node, options) {
   });
   const container = node.getElementsByClassName("ql-editor")[0];
 
-  quill.on("text-change", function(delta, oldDelta, source) {
+  quill_.on("text-change", function(delta, oldDelta, source) {
     node.dispatchEvent(
       new CustomEvent("text-change", {
         detail: {
           html: container.innerHTML,
-          text: quill.getText()
+          text: quill_.getText()
         }
       })
     );
   });
+
+  if(content&&quill){
+    quill_.setContents(content.map(e=>e.html));
+  }
+
 }
 
 exports.quill = quill;

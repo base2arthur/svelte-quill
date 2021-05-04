@@ -1,12 +1,8 @@
 import Quill from "quill";
-let quill
+let quill_
 
-export function setContents(data){
-  quill?.setContents(data.map(e=>e.html))
-}
-
-export function quill(node, options) {
-  quill = new Quill(node, {
+export function quill(node, options,content) {
+  quill_ = new Quill(node, {
     modules: {
       toolbar: [
         [{ header: [1, 2, 3, false] }],
@@ -20,14 +16,19 @@ export function quill(node, options) {
   });
   const container = node.getElementsByClassName("ql-editor")[0];
 
-  quill.on("text-change", function(delta, oldDelta, source) {
+  quill_.on("text-change", function(delta, oldDelta, source) {
     node.dispatchEvent(
       new CustomEvent("text-change", {
         detail: {
           html: container.innerHTML,
-          text: quill.getText()
+          text: quill_.getText()
         }
       })
     );
   });
+
+  if(content&&quill){
+    quill_.setContents(content.map(e=>e.html))
+  }
+
 }
